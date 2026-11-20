@@ -1,0 +1,198 @@
+
+/* =====================================
+   GALERIE - AGRANDISSEMENT DES PHOTOS
+===================================== */
+
+#gallery img {
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+#gallery img:hover {
+    transform: scale(1.025);
+}
+
+.gallery-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 70px;
+    background: rgba(15, 13, 11, 0.95);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.gallery-lightbox.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-image {
+    display: block;
+    max-width: 100%;
+    max-height: 82vh;
+    object-fit: contain;
+    border: 5px solid #fffdf8;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+}
+
+.gallery-lightbox button {
+    position: absolute;
+    border: none;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+}
+
+.lightbox-close {
+    top: 20px;
+    right: 30px;
+    font-size: 42px;
+}
+
+.lightbox-prev,
+.lightbox-next {
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+}
+
+.lightbox-prev {
+    left: 25px;
+}
+
+.lightbox-next {
+    right: 25px;
+}
+
+.lightbox-counter {
+    position: absolute;
+    bottom: 18px;
+    color: #fff;
+    font-family: "DM Sans", sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 600px) {
+    .gallery-lightbox {
+        padding: 55px 35px;
+    }
+
+    .lightbox-prev {
+        left: 5px;
+    }
+
+    .lightbox-next {
+        right: 5px;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+        font-size: 22px;
+    }
+
+    .lightbox-close {
+        right: 15px;
+    }
+}
+
+
+
+/* APPARITION DES SECTIONS */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* BOUTON RETOUR EN HAUT */
+
+.back-to-top {
+    position: fixed;
+    right: 24px;
+    bottom: 95px;
+    z-index: 1000;
+    width: 45px;
+    height: 45px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    background: var(--gold);
+    color: white;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.back-to-top.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* WHATSAPP FLOTTANT */
+
+.whatsapp-floating {
+    position: fixed;
+    right: 24px;
+    bottom: 25px;
+    z-index: 1000;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #25D366;
+    color: white;
+    font-size: 27px;
+    text-decoration: none;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.18);
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-floating:hover {
+    transform: scale(1.08);
+}
+
+/* IMAGES MANQUANTES */
+
+.image-error {
+    opacity: 0.3;
+}
+
+/* ACCESSIBILITE */
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .back-to-top,
+    .whatsapp-floating {
+        transition: none;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .back-to-top {
+        right: 16px;
+    }
+
+    .whatsapp-floating {
+        right: 16px;
+    }
+}
